@@ -6,7 +6,7 @@ module.exports = app => {
     prefix: 'cgi', // optional，default: router.prefix
     controller: { // required
       async fn(ctx) {
-        const data = await reseApi.models.City.find().limit(1)
+        const data = await app.models.City.find().limit(1)
         return data
       }
     },

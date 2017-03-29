@@ -1,6 +1,6 @@
 {
   "name": "rese-app",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "author": "shaw",
   "description": "Node.js application framework with RESTful api",
   "engines": {
@@ -10,13 +10,14 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "export NODE_ENV=test && ./node_modules/.bin/ava -v",
-    "demo": "export NODE_ENV=development && node ./example/"
+    "demo-mongo": "export NODE_ENV=development && node ./example/mongo",
+    "demo-mysql": "export NODE_ENV=development && node ./example/mysql"
   },
   "dependencies": {
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "log4js": "^1.1.1",
-    "rese-api": "0.0.1"
+    "rese-api": "0.0.3"
   },
   "devDependencies": {
     "ava": "^0.18.2",

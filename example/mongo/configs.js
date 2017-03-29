@@ -1,9 +1,9 @@
-const pkg = require('../package.json')
+const pkg = require('../../package.json')
 
 module.exports = {
 
   server: {
-    port: process.env.NODE_ENV === 'development' ? 0 : 9000
+    port: process.env.NODE_ENV === 'development' ? 3000 : 9000
   },
 
   db: {

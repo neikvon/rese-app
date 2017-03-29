@@ -34,11 +34,11 @@ app
 export default {
 
   server: {
-    port: process.env.NODE_ENV === 'development' ? 0 : 9000
+    port: process.env.NODE_ENV === 'development' ? 3000 : 9000
   },
 
   db: {
-    type: 'mongodb',
+    type: 'mongodb', // or 'mysql'
     host: '127.0.0.1',
     port: '27017',
     database: 'your-database-name',
@@ -50,6 +50,8 @@ export default {
     prefix: 'api'
   },
 
+  // mongodb
+  // ref: http://mongoosejs.com/docs/guide.html
   schema: {
     City: {
       name: {
@@ -63,7 +65,30 @@ export default {
       country: String,
       zipCode: Number,
     },
-    Person: ...
+    Person: {
+      ...
+    },
+    ...
+  },
+
+  // mysql
+  // ref: http://docs.sequelizejs.com/en/v3/docs/models-definition/
+  schema: {
+    City: {
+      name: {
+        type: 'STRING',
+        allowNull: false,
+        defaultValue: ''
+      },
+      totalPopulation: {
+        type: 'BIGINT',
+        allowNull: false,
+      },
+      country: {
+        type: 'STRING'
+      }
+    },
+    ...
   },
 
   logs: {
@@ -83,11 +108,63 @@ export default {
   }
 ```
 
+### `new ReseApp(configs, [middlewares]`
+- `configs`: `{Object}` required
+- `middlewares`: `{Array}` optional, middleware functions
+
+### `app.logger`
+Instance of node-log4js
+- `app.logger.trace()`
+- `app.logger.debug()`
+- `app.logger.info()`
+- `app.logger.warn()`
+- `app.logger.error()`
+- `app.logger.fatal()`
+> See more: https://github.com/nomiddlename/log4js-node
+
+### `app.router`
+Instance of koa-router
+> See more: https://github.com/alexmingoia/koa-router
+### `app.models`
+
+Models defined in `config.js` `schema`, each one is a instance of mongoose model (MongoDB) or sequelize model (MySQL)
+> See more:
+>
+> http://mongoosejs.com/docs/queries.html
+>
+> http://docs.sequelizejs.com/en/v3/api/model/
+
+### `app.services`
+All registered services
+
+### `app.addService(name, options)`
+- `name`: `{String}` required, service name
+- `options`: `{Object}` required, service options
+    - `path`: `{String}` required
+    - `method`: `{String}` optional，default: get
+    - `prefix`: `{String}` optional，default: router.prefix
+    - `controller`: `{Object}` required
+      - `fn`: `{Function}` required
+
+### `app.hookService(name, options)`
+- `name`: `{String|Array}` optional, one/some/all service
+- `options`: `{Object}` required
+    - `pre`: `{Function}` optional
+    - `post`: `{Function}` optional
+
 ## Test
-`GET` `http://localhost:3000/api/city`
+- GET: `curl http://localhost:3000/api/city`
+- POST: `curl -i -H "Accept: application/json" -X POST -d "name=ny&totalPopulation=2000" http://localhost:3000/api/city`
+- PUT: `curl -i -H "Accept: application/json" -X PUT -d "totalPopulation=2200" http://localhost:3000/api/city/11`
+- DELETE: `curl -i -H "Accept: application/json" -X DELETE http://localhost:3000/api/city/11`
 
-`POST` `http://localhost:3000/api/city`
+## Examples
+https://github.com/neikvon/rese-app/tree/master/example
 
-`PUT` `http://localhost:3000/api/city/:id`
+## Links
+- Rese-api: https://github.com/neikvon/rese-api
 
-`DELETE` `http://localhost:3000/api/city/:id`
+## Changelog
+
+**2017-03-29 15:13**
+- Upgrade [rese-api](https://www.npmjs.com/package/rese-api)  to v0.0.2.
