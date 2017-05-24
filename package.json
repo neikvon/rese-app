@@ -1,7 +1,6 @@
 {
   "name": "rese-app",
-  "version": "0.0.4",
-  "author": "shaw",
+  "version": "0.0.5",
   "description": "Node.js application framework with RESTful api",
   "engines": {
     "node": ">=7.6.0",
@@ -17,7 +16,7 @@
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "log4js": "^1.1.1",
-    "rese-api": "0.0.3"
+    "rese-api": "0.0.6"
   },
   "devDependencies": {
     "ava": "^0.18.2",
@@ -25,6 +24,22 @@
     "supertest": "^3.0.0"
   },
   "license": "MIT",
-  "repository": {},
-  "keywords": []
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neikvon/rese-app.git"
+  },
+  "keywords": [
+    "application",
+    "restful",
+    "api",
+    "app",
+    "koa",
+    "mongodb",
+    "mysql"
+  ],
+  "bugs": {
+    "url": "https://github.com/neikvon/rese-app/issues"
+  },
+  "homepage": "https://github.com/neikvon/rese-app#readme",
+  "author": "neikvon <neikvon@icloud.com>"
 }

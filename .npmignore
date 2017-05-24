@@ -18,3 +18,4 @@ fbi/
 node_modules/
 example/
 logs/
+tmp-*

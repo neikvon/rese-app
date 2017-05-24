@@ -43,52 +43,51 @@ export default {
     port: '27017',
     database: 'your-database-name',
     username: 'your-username',
-    password: 'your-password'
+    password: 'your-password',
+    // mongodb
+    // ref: http://mongoosejs.com/docs/guide.html
+    schema: {
+      City: {
+        name: {
+          type: String,
+          required: [true, 'name required'],
+        },
+        totalPopulation: {
+          type: Number,
+          required: [true, 'totalPopulation required'],
+        },
+        country: String,
+        zipCode: Number,
+      },
+      Person: {
+        ...
+      },
+      ...
+    },
+
+    // OR mysql
+    // ref: http://docs.sequelizejs.com/en/v3/docs/models-definition/
+    schema: {
+      City: {
+        name: {
+          type: 'STRING',
+          allowNull: false,
+          defaultValue: ''
+        },
+        totalPopulation: {
+          type: 'BIGINT',
+          allowNull: false,
+        },
+        country: {
+          type: 'STRING'
+        }
+      },
+      ...
+    }
   },
 
   router: {
     prefix: 'api'
-  },
-
-  // mongodb
-  // ref: http://mongoosejs.com/docs/guide.html
-  schema: {
-    City: {
-      name: {
-        type: String,
-        required: [true, 'name required'],
-      },
-      totalPopulation: {
-        type: Number,
-        required: [true, 'totalPopulation required'],
-      },
-      country: String,
-      zipCode: Number,
-    },
-    Person: {
-      ...
-    },
-    ...
-  },
-
-  // mysql
-  // ref: http://docs.sequelizejs.com/en/v3/docs/models-definition/
-  schema: {
-    City: {
-      name: {
-        type: 'STRING',
-        allowNull: false,
-        defaultValue: ''
-      },
-      totalPopulation: {
-        type: 'BIGINT',
-        allowNull: false,
-      },
-      country: {
-        type: 'STRING'
-      }
-    },
-    ...
   },
 
   logs: {
@@ -165,6 +164,9 @@ https://github.com/neikvon/rese-app/tree/master/example
 - Rese-api: https://github.com/neikvon/rese-api
 
 ## Changelog
+
+**2017-05-24 14:00**
+- Upgrade [rese-api](https://www.npmjs.com/package/rese-api)  to v0.0.6.
 
 **2017-03-29 15:13**
 - Upgrade [rese-api](https://www.npmjs.com/package/rese-api)  to v0.0.2.
