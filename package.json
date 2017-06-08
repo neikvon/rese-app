@@ -1,6 +1,6 @@
 {
   "name": "rese-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Node.js application framework with RESTful api",
   "engines": {
     "node": ">=7.6.0",
@@ -16,7 +16,7 @@
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "log4js": "^1.1.1",
-    "rese-api": "0.0.6"
+    "rese-api": "^0.0.6"
   },
   "devDependencies": {
     "ava": "^0.18.2",
